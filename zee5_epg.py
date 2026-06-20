@@ -120,15 +120,41 @@ LANG_MAP = {
     "tamil":"ta","telugu":"te","kannada":"kn","hindi":"hi","marathi":"mr",
     "bengali":"bn","bangla":"bn","gujarati":"gu","english":"en","odia":"or","punjabi":"pa",
 }
-IST = timezone(timedelta(hours=5, minutes=30))
+IST      = timezone(timedelta(hours=5, minutes=30))
+IMG_BASE = "https://akamaividz2.zee5.com/image/upload/w_640,h_360/resources/"
 
 
-def to_xmltv(ts: int) -> str:
-    dt = datetime.fromtimestamp(ts, tz=IST)
-    return dt.strftime("%Y%m%d%H%M%S") + " +0530"
+def to_xmltv(iso_str: str) -> str:
+    """Convert UTC ISO '2026-06-19T18:30:00Z' to IST XMLTV '20260620000000 +0530'"""
+    try:
+        s = iso_str.replace("Z", "+00:00")
+        dt = datetime.fromisoformat(s).astimezone(IST)
+        return dt.strftime("%Y%m%d%H%M%S") + " +0530"
+    except Exception:
+        return ""
 
 
 def fetch_day(channels: list, day_offset: int, token: str) -> dict:
+    """
+    API response structure:
+    {
+      "items": [
+        {
+          "id": "0-9-9z5383487",   <- channel id
+          "items": [               <- programmes
+            {
+              "title": "...",
+              "start_time": "2026-06-19T18:30:00Z",  (UTC)
+              "end_time":   "2026-06-19T19:00:00Z",  (UTC)
+              "description": "...",
+              "genres": [{"id":"Entertainment","value":"Entertainment"}],
+              "list_image": "ZeeTamilXxx123.jpg"
+            }
+          ]
+        }
+      ]
+    }
+    """
     results = {}
     headers = {**HEADERS, "x-access-token": token}
     batch_size = 10
@@ -149,9 +175,10 @@ def fetch_day(channels: list, day_offset: int, token: str) -> dict:
         try:
             with urllib.request.urlopen(req, timeout=20) as resp:
                 data = json.loads(resp.read().decode("utf-8"))
-            for ch_data in data.get("channel_list", []):
-                cid = ch_data.get("id","")
-                results[cid] = ch_data.get("assets", [])
+            # Top-level "items" = list of channels, each with nested "items" = programmes
+            for ch_data in data.get("items", []):
+                cid = ch_data.get("id", "")
+                results[cid] = ch_data.get("items", [])
         except Exception as e:
             print(f"  [!] offset={day_offset} batch={i}: {e}", file=sys.stderr)
         time.sleep(0.2)
@@ -186,36 +213,45 @@ def build_epg(channels: list, days: int, token: str) -> ET.Element:
                 continue
             print(f"    {meta['name']}: {len(assets)} programmes")
             for item in assets:
-                start = item.get("start_timestamp") or item.get("broadcast_start_time") or item.get("start")
-                end   = item.get("end_timestamp")   or item.get("broadcast_end_time")   or item.get("end")
-                title = (item.get("title") or item.get("asset_title") or "").strip() or "Unknown"
-                if not start or not end:
+                # Actual API fields from JSON response
+                start_iso = item.get("start_time", "")
+                end_iso   = item.get("end_time", "")
+                title     = (item.get("title") or "").strip() or "Unknown"
+                if not start_iso or not end_iso:
+                    continue
+
+                start_xmltv = to_xmltv(start_iso)
+                end_xmltv   = to_xmltv(end_iso)
+                if not start_xmltv or not end_xmltv:
                     continue
 
                 prog = ET.SubElement(root, "programme")
-                prog.set("start",   to_xmltv(int(start)))
-                prog.set("stop",    to_xmltv(int(end)))
+                prog.set("start",   start_xmltv)
+                prog.set("stop",    end_xmltv)
                 prog.set("channel", meta["tvg_id"])
 
                 t = ET.SubElement(prog, "title")
                 t.set("lang", meta["lang"])
                 t.text = title
 
-                desc = (item.get("description") or item.get("asset_desc") or "").strip()
+                desc = (item.get("description") or "").strip()
                 if desc:
                     d = ET.SubElement(prog, "desc")
                     d.set("lang", meta["lang"])
                     d.text = desc
 
-                genre = item.get("genre", [])
-                if genre:
+                # genres: [{"id":"Entertainment","value":"Entertainment"}]
+                genres = item.get("genres", [])
+                if genres:
                     cat = ET.SubElement(prog, "category")
                     cat.set("lang", "en")
-                    cat.text = genre[0] if isinstance(genre, list) else str(genre)
+                    cat.text = genres[0].get("value", "")
 
-                img = item.get("image_url") or item.get("thumbnail") or ""
-                if img:
-                    ET.SubElement(prog, "icon").set("src", img)
+                # list_image: "ZeeTamilXxx123.jpg"
+                list_img = item.get("list_image", "")
+                if list_img:
+                    img_url = IMG_BASE + list_img if not list_img.startswith("http") else list_img
+                    ET.SubElement(prog, "icon").set("src", img_url)
 
                 total += 1
 
