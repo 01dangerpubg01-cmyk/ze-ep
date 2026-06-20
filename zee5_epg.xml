@@ -1,0 +1,153 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<tv generator-info-name="zee5-epg" source-info-name="Zee5" source-info-url="https://www.zee5.com/livetv">
+  <channel id="zee5-zeetamil">
+    <display-name lang="ta">Zee Tamil</display-name>
+    <icon src="https://akamaividz2.zee5.com/image/upload/w_100,h_100/resources/0-9-9z5383487/list/150x150/zeetamil150x150.png"/>
+    <url>https://www.zee5.com/livetv</url>
+  </channel>
+  <channel id="zee5-zeecinemalu">
+    <display-name lang="te">Zee Cinemalu</display-name>
+    <icon src="https://akamaividz2.zee5.com/image/upload/w_100,h_100/resources/0-9-9z5383488/list/150x150/zeecinemalu150x150.png"/>
+    <url>https://www.zee5.com/livetv</url>
+  </channel>
+  <channel id="zee5-zeetelugu">
+    <display-name lang="te">Zee Telugu</display-name>
+    <icon src="https://akamaividz2.zee5.com/image/upload/w_100,h_100/resources/0-9-9z5383485/list/150x150/zeetelugu150x150.png"/>
+    <url>https://www.zee5.com/livetv</url>
+  </channel>
+  <channel id="zee5-zeemarathi">
+    <display-name lang="mr">Zee Marathi</display-name>
+    <icon src="https://akamaividz2.zee5.com/image/upload/w_100,h_100/resources/0-9-9z5383486/list/150x150/zeemarathi150x150.png"/>
+    <url>https://www.zee5.com/livetv</url>
+  </channel>
+  <channel id="zee5-zeekannada">
+    <display-name lang="kn">Zee Kannada</display-name>
+    <icon src="https://akamaividz2.zee5.com/image/upload/w_100,h_100/resources/0-9-9z5383466/list/150x150/zeekannada150x150.png"/>
+    <url>https://www.zee5.com/livetv</url>
+  </channel>
+  <channel id="zee5-zeetv">
+    <display-name lang="hi">Zee TV</display-name>
+    <icon src="https://akamaividz2.zee5.com/image/upload/w_100,h_100/resources/0-9-zeetv/list/150x150/zeetv150x150.png"/>
+    <url>https://www.zee5.com/livetv</url>
+  </channel>
+  <channel id="zee5-zeecinema">
+    <display-name lang="hi">Zee Cinema</display-name>
+    <icon src="https://akamaividz2.zee5.com/image/upload/w_100,h_100/resources/0-9-zeecin/list/150x150/zeecinema150x150.png"/>
+    <url>https://www.zee5.com/livetv</url>
+  </channel>
+  <channel id="zee5-zeebusiness">
+    <display-name lang="hi">Zee Business</display-name>
+    <icon src="https://akamaividz2.zee5.com/image/upload/w_100,h_100/resources/0-9-zeebiz/list/150x150/zeebusiness150x150.png"/>
+    <url>https://www.zee5.com/livetv</url>
+  </channel>
+  <channel id="zee5-zeenews">
+    <display-name lang="hi">Zee News</display-name>
+    <icon src="https://akamaividz2.zee5.com/image/upload/w_100,h_100/resources/0-9-zeenews/list/150x150/zeenews150x150.png"/>
+    <url>https://www.zee5.com/livetv</url>
+  </channel>
+  <channel id="zee5-zeebiharjharkhand">
+    <display-name lang="hi">Zee Bihar Jharkhand</display-name>
+    <icon src="https://akamaividz2.zee5.com/image/upload/w_100,h_100/resources/0-9-251/list/150x150/zeebiharjharkhand150x150.png"/>
+    <url>https://www.zee5.com/livetv</url>
+  </channel>
+  <channel id="zee5-zeempcg">
+    <display-name lang="hi">Zee MP CG</display-name>
+    <icon src="https://akamaividz2.zee5.com/image/upload/w_100,h_100/resources/0-9-255/list/150x150/zeempcg150x150.png"/>
+    <url>https://www.zee5.com/livetv</url>
+  </channel>
+  <channel id="zee5-zeerajasthan">
+    <display-name lang="hi">Zee Rajasthan</display-name>
+    <icon src="https://akamaividz2.zee5.com/image/upload/w_100,h_100/resources/0-9-259/list/150x150/zeerajasthan150x150.png"/>
+    <url>https://www.zee5.com/livetv</url>
+  </channel>
+  <channel id="zee5-zeedelhi">
+    <display-name lang="hi">Zee Delhi NCR Haryana</display-name>
+    <icon src="https://akamaividz2.zee5.com/image/upload/w_100,h_100/resources/0-9-261/list/150x150/zeedelhi150x150.png"/>
+    <url>https://www.zee5.com/livetv</url>
+  </channel>
+  <channel id="zee5-zeeyuva">
+    <display-name lang="mr">Zee Yuva</display-name>
+    <icon src="https://akamaividz2.zee5.com/image/upload/w_100,h_100/resources/0-9-zeeyuva/list/150x150/zeeyuva150x150.png"/>
+    <url>https://www.zee5.com/livetv</url>
+  </channel>
+  <channel id="zee5-zeeanmol">
+    <display-name lang="hi">Zee Anmol</display-name>
+    <icon src="https://akamaividz2.zee5.com/image/upload/w_100,h_100/resources/0-9-zeeanu/list/150x150/zeeanmol150x150.png"/>
+    <url>https://www.zee5.com/livetv</url>
+  </channel>
+  <channel id="zee5-zeepunjab">
+    <display-name lang="pa">Zee Punjab</display-name>
+    <icon src="https://akamaividz2.zee5.com/image/upload/w_100,h_100/resources/0-9-9z543514/list/150x150/zeepunjab150x150.png"/>
+    <url>https://www.zee5.com/livetv</url>
+  </channel>
+  <channel id="zee5-zeesarthak">
+    <display-name lang="or">Zee Sarthak</display-name>
+    <icon src="https://akamaividz2.zee5.com/image/upload/w_100,h_100/resources/0-9-zeesal/list/150x150/zeesarthak150x150.png"/>
+    <url>https://www.zee5.com/livetv</url>
+  </channel>
+  <channel id="zee5-wion">
+    <display-name lang="en">WION</display-name>
+    <icon src="https://akamaividz2.zee5.com/image/upload/w_100,h_100/resources/0-9-wion/list/150x150/wion150x150.png"/>
+    <url>https://www.zee5.com/livetv</url>
+  </channel>
+  <channel id="zee5-zee-cafe">
+    <display-name lang="en">Zee Cafe</display-name>
+    <icon src="https://akamaividz2.zee5.com/image/upload/w_100,h_100/resources/0-9-zlcfty/list/150x150/zeecafe150x150.png"/>
+    <url>https://www.zee5.com/livetv</url>
+  </channel>
+  <channel id="zee5-andpictures">
+    <display-name lang="hi">&amp;pictures</display-name>
+    <icon src="https://akamaividz2.zee5.com/image/upload/w_100,h_100/resources/0-9-%26pictures/list/150x150/andpictures150x150.png"/>
+    <url>https://www.zee5.com/livetv</url>
+  </channel>
+  <channel id="zee5-andtv">
+    <display-name lang="hi">&amp;TV</display-name>
+    <icon src="https://akamaividz2.zee5.com/image/upload/w_100,h_100/resources/0-9-andtv/list/150x150/andtv150x150.png"/>
+    <url>https://www.zee5.com/livetv</url>
+  </channel>
+  <channel id="zee5-aajtak">
+    <display-name lang="hi">Aaj Tak</display-name>
+    <icon src="https://akamaividz2.zee5.com/image/upload/w_100,h_100/resources/0-9-aajtak/list/150x150/aajtak150x150.png"/>
+    <url>https://www.zee5.com/livetv</url>
+  </channel>
+  <channel id="zee5-indiatoday">
+    <display-name lang="en">India Today</display-name>
+    <icon src="https://akamaividz2.zee5.com/image/upload/w_100,h_100/resources/0-9-indiatoday/list/150x150/indiatoday150x150.png"/>
+    <url>https://www.zee5.com/livetv</url>
+  </channel>
+  <channel id="zee5-zeenewstamil">
+    <display-name lang="ta">Zee News Tamil</display-name>
+    <icon src="https://akamaividz2.zee5.com/image/upload/w_100,h_100/resources/0-9-9z583533/list/150x150/zeenewstamil150x150.png"/>
+    <url>https://www.zee5.com/livetv</url>
+  </channel>
+  <channel id="zee5-zeealwan">
+    <display-name lang="ar">Zee Alwan HD</display-name>
+    <icon src="https://akamaividz2.zee5.com/image/upload/w_100,h_100/resources/0-9-9z5817234/list/150x150/zeealwan150x150.png"/>
+    <url>https://www.zee5.com/livetv</url>
+  </channel>
+  <channel id="zee5-zeeaflam">
+    <display-name lang="ar">Zee Aflam HD</display-name>
+    <icon src="https://akamaividz2.zee5.com/image/upload/w_100,h_100/resources/0-9-9z5817235/list/150x150/zeeaflam150x150.png"/>
+    <url>https://www.zee5.com/livetv</url>
+  </channel>
+  <channel id="zee5-zeeone">
+    <display-name lang="hi">Zee One</display-name>
+    <icon src="https://akamaividz2.zee5.com/image/upload/w_100,h_100/resources/0-9-9z5825786/list/150x150/zeeone150x150.png"/>
+    <url>https://www.zee5.com/livetv</url>
+  </channel>
+  <channel id="zee5-zeebangla">
+    <display-name lang="bn">Zee Bangla</display-name>
+    <icon src="https://akamaividz2.zee5.com/image/upload/w_100,h_100/resources/0-9-zeebangla/list/150x150/zeebangla150x150.png"/>
+    <url>https://www.zee5.com/livetv</url>
+  </channel>
+  <channel id="zee5-zeebanglasonar">
+    <display-name lang="bn">Zee Bangla Sonar</display-name>
+    <icon src="https://akamaividz2.zee5.com/image/upload/w_100,h_100/resources/0-9-zbsn/list/150x150/zeebanglasonar150x150.png"/>
+    <url>https://www.zee5.com/livetv</url>
+  </channel>
+  <channel id="zee5-zee24kalak">
+    <display-name lang="gu">Zee 24 Kalak</display-name>
+    <icon src="https://akamaividz2.zee5.com/image/upload/w_100,h_100/resources/0-9-zeekalak/list/150x150/zee24kalak150x150.png"/>
+    <url>https://www.zee5.com/livetv</url>
+  </channel>
+</tv>
