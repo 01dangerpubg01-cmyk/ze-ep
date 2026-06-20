@@ -7,26 +7,24 @@ on:
     inputs:
       days:
         description: 'Days to fetch (1-7)'
-        required: false
         default: '3'
       lang:
-        description: 'Language filter (tamil,telugu,kannada,hindi,marathi,bangla,english or leave empty for all)'
-        required: false
+        description: 'Language filter (optional: tamil,telugu,kannada,hindi...)'
         default: ''
 
 jobs:
   generate-epg:
     runs-on: ubuntu-latest
     steps:
-      - name: Checkout repository
-        uses: actions/checkout@v4
+      - uses: actions/checkout@v4
 
-      - name: Set up Python
-        uses: actions/setup-python@v5
+      - uses: actions/setup-python@v5
         with:
           python-version: '3.11'
 
       - name: Generate Zee5 EPG
+        env:
+          ZEE5_TOKEN: ${{ secrets.ZEE5_TOKEN }}
         run: |
           DAYS="${{ github.event.inputs.days || '3' }}"
           LANG="${{ github.event.inputs.lang }}"
