@@ -1,0 +1,53 @@
+name: Refresh Zee5 EPG
+
+on:
+  schedule:
+    - cron: '0 20 * * *'   # Daily 1:30 AM IST (20:00 UTC)
+  workflow_dispatch:
+    inputs:
+      days:
+        description: 'Days to fetch (1-7)'
+        required: false
+        default: '3'
+      lang:
+        description: 'Language filter (tamil,telugu,kannada,hindi,marathi,bangla,english or leave empty for all)'
+        required: false
+        default: ''
+
+jobs:
+  generate-epg:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+
+      - name: Generate Zee5 EPG
+        run: |
+          DAYS="${{ github.event.inputs.days || '3' }}"
+          LANG="${{ github.event.inputs.lang }}"
+          if [ -n "$LANG" ]; then
+            python3 zee5_epg.py --days $DAYS --lang "$LANG" --output zee5_epg.xml --gz
+          else
+            python3 zee5_epg.py --days $DAYS --output zee5_epg.xml --gz
+          fi
+
+      - name: Show stats
+        run: |
+          ls -lh zee5_epg.xml zee5_epg.xml.gz
+          echo "Channels   : $(grep -c '<channel' zee5_epg.xml)"
+          echo "Programmes : $(grep -c '<programme' zee5_epg.xml)"
+
+      - name: Commit and push
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "github-actions[bot]@users.noreply.github.com"
+          git add zee5_epg.xml zee5_epg.xml.gz
+          git diff --staged --quiet || (
+            git commit -m "chore: refresh Zee5 EPG $(date +'%Y-%m-%d')"
+            git push
+          )
